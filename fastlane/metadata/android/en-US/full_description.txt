@@ -1,0 +1,14 @@
+This app implements a custom Android TextToSpeech service that captures spoken text and saves it to a file instead of playing audio.
+
+Perfect for:
+
+    Debugging TTS flows across apps
+    Logging utterances for accessibility tools
+    Capturing text for subtitling, archival, or analysis
+
+Usage:
+
+    Install and enable as default TTS engine (Settings → Accessibility → Text-to-Speech → Select this engine)
+    Any app calling TextToSpeech.speak() will now log text to: /Download/textToFile.txt
+
+Note: This is NOT a functional speech synthesizer — no audio is generated. It simply records the content of TTS requests for inspection.
