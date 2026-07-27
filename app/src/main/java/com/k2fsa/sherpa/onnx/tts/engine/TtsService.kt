@@ -51,7 +51,7 @@ class TtsService : TextToSpeechService() {
         }
 
         val text = request.charSequenceText.toString()
-        Log.d(TAG, "Text to write: $text")
+        //Log.d(TAG, "Text to write: $text")
 
         // Write text to file
         writeTextToFile(text)
