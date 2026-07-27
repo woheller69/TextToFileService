@@ -58,7 +58,7 @@ class TtsService : TextToSpeechService() {
 
         // Since this is text-to-file (not audio TTS), no audio data is produced,
         // but we must still call callback methods to signal completion.
-         callback.start(16000, AudioFormat.ENCODING_PCM_16BIT, 1) // if you want to be compatible with callback expectations
+         callback.start(16000, AudioFormat.ENCODING_PCM_16BIT, 1)
          callback.done()
     }
 
@@ -71,20 +71,10 @@ class TtsService : TextToSpeechService() {
             FileOutputStream(file, true).use { fos ->
                 fos.write(text.toByteArray())
                 fos.write("\n".toByteArray()) // add newline for readability
-                Log.i(TAG, "Appended text to: $file")
             }
         } catch (e: IOException) {
             Log.e(TAG, "Error writing to file: ${e.message}", e)
         }
     }
 
-    // Optional: Helper to check and request permissions
-    private fun checkWritePermission(): Boolean {
-        return ContextCompat.checkSelfPermission(
-            this,
-            Manifest.permission.WRITE_EXTERNAL_STORAGE
-        ) == PackageManager.PERMISSION_GRANTED
-    }
-
-    // Optional: You may want to request permissions if needed (handled by app, not service usually)
 }
